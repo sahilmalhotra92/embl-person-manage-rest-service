@@ -1,0 +1,195 @@
+openapi: 3.0.0
+info:
+  description: EMBL API
+  version: '1.0'
+  title: embl-person-manage-rest
+tags:
+  - name: embl-person-manage-rest
+    description: manage persons
+paths:
+  '/api/v1/persons':
+    post:
+      tags:
+        - embl-person-manage-rest
+      summary: create person
+      description: stores person in the database
+      operationId: createPerson
+      requestBody:
+        $ref: '#/components/requestBodies/Person'
+      responses:
+        '201':
+          $ref: '#/components/responses/PersonDetails'
+        '400':
+          $ref: '#/components/responses/BadRequestException'
+        '500':
+          $ref: '#/components/responses/InternalServerException'
+      deprecated: false
+    get:
+      tags:
+        - embl-person-manage-rest
+      summary: fetch all the persons
+      description: fetch all the persons from the database
+      operationId: fetchAllPersons
+      responses:
+        '200':
+          $ref: '#/components/responses/Persons'
+        '400':
+          $ref: '#/components/responses/BadRequestException'
+        '500':
+          $ref: '#/components/responses/InternalServerException'
+      deprecated: false
+  '/api/v1/persons/{personId}':
+    get:
+      tags:
+        - embl-person-manage-rest
+      summary: fetch person by personId
+      description: fetch the person by personId from the database
+      operationId: fetchPerson
+      parameters:
+        - name: personId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          $ref: '#/components/responses/Person'
+        '400':
+          $ref: '#/components/responses/BadRequestException'
+        '404':
+          $ref: '#/components/responses/NotFoundException'
+        '500':
+          $ref: '#/components/responses/InternalServerException'
+      deprecated: false
+    put:
+      tags:
+        - embl-person-manage-rest
+      summary: update person by personId
+      description: update the person by personId from the database
+      operationId: updatePerson
+      parameters:
+        - name: personId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        $ref: '#/components/requestBodies/Person'
+      responses:
+        '200':
+          description: person updated
+        '400':
+          $ref: '#/components/responses/BadRequestException'
+        '404':
+          $ref: '#/components/responses/NotFoundException'
+        '500':
+          $ref: '#/components/responses/InternalServerException'
+      deprecated: false
+    delete:
+      tags:
+        - embl-person-manage-rest
+      summary: delete person by personId
+      description: delete the person by personId from the database
+      operationId: deletePerson
+      parameters:
+        - name: personId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: person deleted
+        '400':
+          $ref: '#/components/responses/BadRequestException'
+        '404':
+          $ref: '#/components/responses/NotFoundException'
+        '500':
+          $ref: '#/components/responses/InternalServerException'
+      deprecated: false
+components:
+  requestBodies:
+    Person:
+      description: Person
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Person'
+  responses:
+    Persons:
+      description: Person
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Persons'
+    Person:
+      description: Person
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Person'
+    PersonDetails:
+      description: PersonDetails
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/Person'
+              - $ref: '#/components/schemas/PersonDetails'
+    NotFoundException:
+      description: not found exception
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequestException:
+      description: Bad request exception
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    InternalServerException:
+      description: interal server exception
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    PersonDetails:
+      type: object
+      properties:
+        personId:
+          type: integer
+          format: int64
+    Persons:
+      type: object
+      properties:
+        person:
+          type: array
+          items:
+            $ref: '#/components/schemas/Person'
+    Person:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        age:
+          type: string
+        favouriteColour:
+          type: string
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        error:
+          type: string
+        exception:
+          type: string
+        timestamp:
+          type: string

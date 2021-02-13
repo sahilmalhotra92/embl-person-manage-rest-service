@@ -11,121 +11,121 @@ Method | HTTP request | Description
 [**updatePerson**](EmblPersonManageRestService.md#updatePerson) | **PUT** /api/v1/persons/{personId} | update person by personId
 
 
-        <a name="createPerson"></a>
-        # **createPerson**
-        > Person createPerson(person)
+<a name="createPerson"></a>
+# **createPerson**
+> Person createPerson(person)
 
-        create person
-        stores person in the database
-
-
-        ### Parameters
-
-        
-            Name | Type | Description  | Notes
-            ------------- | ------------- | ------------- | -------------
-         **person** | [**Person**](Person.md)| Person | [optional]
-
-        ### Return type
-
-        [**Person**](Person.md)
-
-        ### HTTP request headers
-
-        - **Content-Type**: application/json
-        - **Accept**: application/json, application
-
-        <a name="deletePerson"></a>
-        # **deletePerson**
-        > deletePerson(personId)
-
-        delete person by personId
-        delete the person by personId from the database
+create person
+stores person in the database
 
 
-        ### Parameters
-
-        
-            Name | Type | Description  | Notes
-            ------------- | ------------- | ------------- | -------------
-         **personId** | **Long**|  |
-
-        ### Return type
-
-        null (empty response body)
-
-        ### HTTP request headers
-
-        - **Content-Type**: Not defined
-        - **Accept**: application
-
-        <a name="fetchAllPersons"></a>
-        # **fetchAllPersons**
-        > Persons fetchAllPersons()
-
-        fetch all the persons
-        fetch all the persons from the database
+### Parameters
 
 
-        ### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**person** | [**Person**](Person.md)| Person | [required]
 
-        This endpoint does not need any parameter.
-        
-        ### Return type
+### Return type
 
-        [**Persons**](Persons.md)
+[**Person**](Person.md)
 
-        ### HTTP request headers
+### HTTP request headers
 
-        - **Content-Type**: Not defined
-        - **Accept**: application/json, application
+- **Content-Type**: application/json
+- **Accept**: application/json, application
 
-        <a name="fetchPerson"></a>
-        # **fetchPerson**
-        > Person fetchPerson(personId)
+<a name="deletePerson"></a>
+# **deletePerson**
+> deletePerson(personId)
 
-        fetch person by personId
-        fetch the person by personId from the database
-
-
-        ### Parameters
-
-        
-            Name | Type | Description  | Notes
-            ------------- | ------------- | ------------- | -------------
-         **personId** | **Long**|  |
-
-        ### Return type
-
-        [**Person**](Person.md)
-
-        ### HTTP request headers
-
-        - **Content-Type**: Not defined
-        - **Accept**: application/json, application
-
-        <a name="updatePerson"></a>
-        # **updatePerson**
-        > updatePerson(personId, person)
-
-        update person by personId
-        update the person by personId from the database
+delete person by personId
+delete the person by personId from the database
 
 
-        ### Parameters
+### Parameters
 
-        
-            Name | Type | Description  | Notes
-            ------------- | ------------- | ------------- | -------------
-         **personId** | **Long**|  |
- **person** | [**Person**](Person.md)| Person | [optional]
 
-        ### Return type
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**personId** | **Long**|  |
 
-        null (empty response body)
+### Return type
 
-        ### HTTP request headers
+void (empty response body)
 
-        - **Content-Type**: application/json
-        - **Accept**: application
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application
+
+<a name="fetchAllPersons"></a>
+# **fetchAllPersons**
+> Persons fetchAllPersons()
+
+fetch all the persons
+fetch all the persons from the database
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**Persons**](Persons.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json, application
+
+<a name="fetchPerson"></a>
+# **fetchPerson**
+> Person fetchPerson(personId)
+
+fetch person by personId
+fetch the person by personId from the database
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**personId** | **Long**|  |
+
+### Return type
+
+[**Person**](Person.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json, application
+
+<a name="updatePerson"></a>
+# **updatePerson**
+> updatePerson(personId, person)
+
+update person by personId
+update the person by personId from the database
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**personId** | **Long**|  |
+**person** | [**Person**](Person.md)| Person | [optional]
+
+### Return type
+
+void (empty response body)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application
 
